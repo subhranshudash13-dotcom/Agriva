@@ -33,6 +33,9 @@ export function FairPriceAIHero() {
     async function fetchPricing() {
       try {
         const res = await fetch('/api/fair-price?region=Anantapur+Mandi&crop=Groundnut')
+        if (!res.ok) return
+        const contentType = res.headers.get('content-type')
+        if (!contentType || !contentType.includes('application/json')) return
         const json = await res.json()
         setData(json)
       } catch (e) {
@@ -43,8 +46,7 @@ export function FairPriceAIHero() {
     }
     
     fetchPricing()
-    // Update at regular intervals
-    const interval = setInterval(fetchPricing, 300000) // 5 minutes
+    const interval = setInterval(fetchPricing, 60000) // 60 seconds
     return () => clearInterval(interval)
   }, [])
 

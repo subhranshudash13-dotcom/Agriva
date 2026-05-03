@@ -52,7 +52,7 @@ export function RainRiskCard() {
       }
     }
     fetchWeather()
-    const interval = setInterval(fetchWeather, 300000)
+    const interval = setInterval(fetchWeather, 60000) // 60 seconds
     return () => clearInterval(interval)
   }, [region])
 

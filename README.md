@@ -174,16 +174,6 @@ Both keys are free-tier compatible. The app gracefully falls back to mock data i
 
 ---
 
-## Deployment
-
-Agriva is optimized for one-click Vercel deployment:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/agriva)
-
-Set your environment variables in the Vercel dashboard under **Settings → Environment Variables**.
-
----
-
 ## Why "Agriva"?
 
 **Agri** (agriculture) + **Va** (value). Because farming should create value, not just produce.
