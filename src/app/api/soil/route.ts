@@ -20,16 +20,16 @@ export async function POST(request: Request) {
 Context:
 Crop: ${cropType}
 Current Soil N-P-K (Nitrogen-Phosphorus-Potassium) Values: N=${nitrogen}, P=${phosphorus}, K=${potassium}. 
-(Assume standard scale 1-100 or generic values if unspecified).
+(Note: N:P:K values are in generic units 1-100 where 100 is high/sufficient).
 
-Provide exactly 3 vital pieces of advice for fertilizer usage and soil preparation. Also provide an overall "Health Score" out of 100.
+Provide exactly 3 vital, situational pieces of advice for fertilizer usage and soil preparation for this specific crop. Include exact brand names (e.g., IFFCO Urea, DAP) and weight measurements. Also provide an overall "Health Score" out of 100.
 Return ONLY raw JSON with no other text, matching this exact schema:
 {
   "healthScore": 82,
   "status": "Excellent | Good | Fair | Poor",
   "recommendations": [
     "Specific fertilizer amount string",
-    "Organic alternative string",
+    "Organic/Situational alternative string",
     "Watering or preparation note"
   ]
 }`
@@ -84,13 +84,19 @@ Return ONLY raw JSON with no other text, matching this exact schema:
 
     return NextResponse.json(result)
   } catch (error) {
-    console.error(error)
+    console.error("Soil Health API Error:", error)
+    
+    // Attempting to extract inputs from request if available for a smarter fallback
+    // Since we are in the catch block, we might not have 'nitrogen' etc. if the error was in request.json()
+    // But usually it's in the AI fetch.
+    
     return NextResponse.json({
-        healthScore: 60,
+        healthScore: 50,
         status: "Fair",
         recommendations: [
-          "Apply DAP at 50kg per acre.",
-          "Increase organic compost application."
+          "Ensure N-P-K balance is maintained for your specific crop.",
+          "Add organic matter to improve soil structure and microbial health.",
+          "Conduct a laboratory soil test for more precise nutrient mapping."
         ]
     })
   }

@@ -27,13 +27,14 @@ type WeatherData = {
 
 export function RainRiskCard() {
   const { region } = useRegion()
+  const [crop, setCrop] = React.useState("Rice") // Default to Rice since user mentioned it
   const [data, setData] = React.useState<WeatherData | null>(null)
   const [loading, setLoading] = React.useState(true)
 
   React.useEffect(() => {
     async function fetchWeather() {
       try {
-        const res = await fetch(`/api/weather?region=${region}`)
+        const res = await fetch(`/api/weather?region=${region}&crop=${crop}`)
         if (!res.ok) {
           console.error("Weather API returned", res.status)
           return
@@ -54,7 +55,7 @@ export function RainRiskCard() {
     fetchWeather()
     const interval = setInterval(fetchWeather, 60000) // 60 seconds
     return () => clearInterval(interval)
-  }, [region])
+  }, [region, crop])
 
   if (loading || !data) {
     return (
@@ -79,9 +80,21 @@ export function RainRiskCard() {
               <CloudRain className="w-6 h-6 text-blue-500" />
               RainRisk <span className="font-light text-muted-foreground">AI</span>
             </CardTitle>
-            <CardDescription className="text-sm font-medium">
-              Hyper-local impact analysis for <strong className="text-foreground">{data.crop}</strong> in <strong className="text-foreground">{data.location}</strong>
-            </CardDescription>
+            <div className="flex items-center gap-2">
+               <span className="text-sm font-medium text-muted-foreground">Analysis for</span>
+               <select 
+                 value={crop} 
+                 onChange={(e) => setCrop(e.target.value)}
+                 className="text-sm font-bold bg-transparent border-b border-blue-500/50 focus:outline-none focus:border-blue-500 cursor-pointer text-foreground appearance-none px-1"
+               >
+                 <option value="Rice" className="bg-background">Rice</option>
+                 <option value="Groundnut" className="bg-background">Groundnut</option>
+                 <option value="Cotton" className="bg-background">Cotton</option>
+                 <option value="Maize" className="bg-background">Maize</option>
+                 <option value="Wheat" className="bg-background">Wheat</option>
+               </select>
+               <span className="text-sm font-medium text-muted-foreground">in <strong className="text-foreground">{data.location}</strong></span>
+            </div>
           </div>
           <Badge variant="outline" className="bg-background shadow-sm border-blue-200 dark:border-blue-800">
             <span className="w-2 h-2 rounded-full bg-blue-500 mr-2 animate-pulse" />

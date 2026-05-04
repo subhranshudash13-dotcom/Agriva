@@ -5,6 +5,8 @@ export async function GET(request: Request) {
   const latParam = searchParams.get('lat')
   const lonParam = searchParams.get('lon')
   const region = searchParams.get('region') || 'anantapur'
+  const crop = searchParams.get('crop') || 'Groundnut'
+  const stage = searchParams.get('stage') || 'Growth'
   
   // Region to Coordinates Mapping
   const regions: Record<string, { lat: string, lon: string, name: string }> = {
@@ -95,17 +97,18 @@ export async function GET(request: Request) {
 
   // 2. Fetch Dynamic Recommendations from Groq based on Weather
   let recommendedActions = [
-    "Harvest mature groundnut immediately before Thursday's heavy rain.",
-    "Delay any planned pesticide spraying until Friday."
+    `Harvest mature ${crop} immediately if risks appear high.`,
+    "Delay any planned pesticide spraying until dry conditions return."
   ]
 
   if (groqKey) {
     try {
       const prompt = `You are an expert AI Crop Advisor. Analyze this 7-day weather forecast (Rain/Temp):
 ${JSON.stringify(mockForecast.slice(0,5))}
-Generate exactly 3 EXTREMELY BRIEF, actionable tips (under 10 words each) for a farmer. 
-CRITICAL: ONLY mention weather conditions or risks that explicitly appear in the JSON data above. DO NOT mention "Thursday" or any other specific day unless it is explicitly marked in the JSON. If the forecast is clear, focus on irrigation or soil prep. 
-Return ONLY a raw JSON array of strings e.g. ["Tip 1", "Tip 2", "Tip 3"].`
+
+Generate exactly 3 SITUATIONAL, actionable tips (under 10 words each) specifically for the crop "${crop}" in its "${stage}" stage. 
+CRITICAL: Tips must be unique to this crop's water needs and current weather. DO NOT mention "Thursday" or any other specific day unless it is explicitly marked in the JSON. If the forecast is clear, focus on irrigation or soil prep. 
+Return ONLY a raw JSON array of strings e.g. ["Rice Tip 1", "Rice Tip 2", "Rice Tip 3"].`
 
       const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -133,8 +136,8 @@ Return ONLY a raw JSON array of strings e.g. ["Tip 1", "Tip 2", "Tip 3"].`
 
   return NextResponse.json({
     location: locationName,
-    crop: "Groundnut",
-    stage: "Maturation",
+    crop: crop,
+    stage: stage,
     forecast: mockForecast,
     actions: recommendedActions
   })
