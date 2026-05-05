@@ -21,7 +21,7 @@ export default function LandingPage() {
 
   return (
     <div className="flex min-h-[100dvh] flex-col font-sans bg-background text-foreground transition-colors duration-300">
-      
+
       {/* Navigation */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur-lg">
         <div className="container flex h-16 items-center justify-between mx-auto px-4 md:px-10">
@@ -69,7 +69,7 @@ export default function LandingPage() {
 
         {/* ────── HERO ────── */}
         <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-          
+
           {/* Full-bleed high-res background image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -91,12 +91,12 @@ export default function LandingPage() {
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 Agri-Intelligence Engine Active
               </div>
-              
+
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
                 {t("hero.title1")}<br />
                 <span className="text-green-600 dark:text-green-500">{t("hero.title2")}</span>
               </h1>
-              
+
               <p className="text-lg md:text-xl text-muted-foreground font-medium leading-relaxed max-w-xl">
                 {t("hero.subtitle")}
               </p>
@@ -166,7 +166,7 @@ export default function LandingPage() {
         <section id="how-it-works" className="py-24 bg-muted/40 border-y">
           <div className="container mx-auto px-4 md:px-10">
             <div className="text-center mb-16">
-              <p className="text-green-600 dark:text-green-500 font-bold uppercase tracking-widest text-sm mb-3">{t("nav.howItWorks")}</p>
+              <p className="text-orange-600 dark:text-orange-500 font-bold uppercase tracking-widest text-sm mb-3">{t("nav.howItWorks")}</p>
               <h2 className="text-4xl font-black tracking-tight">Intelligence at your Fingertips</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
