@@ -1,0 +1,115 @@
+﻿
+> agribrain@0.1.0 lint
+> eslint
+
+
+C:\Users\Hp\new\Agriva\src\app\api\crop-iq\route.ts
+  89:26  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  95:47  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Hp\new\Agriva\src\app\api\soil\route.ts
+   4:13  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   7:12  warning  'e' is defined but never used             @typescript-eslint/no-unused-vars
+  86:14  warning  'parseError' is defined but never used    @typescript-eslint/no-unused-vars
+  97:63  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Hp\new\Agriva\src\app\api\weather\route.ts
+  126:49  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Hp\new\Agriva\src\app\crop-iq\page.tsx
+  22:80  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\Hp\new\Agriva\src\app\dashboard\page.tsx
+    7:63   warning  'TrendingUp' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+    7:75   warning  'ThermometerSun' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+    8:18   warning  'AnimatePresence' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+   24:20   warning  'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+   36:7    error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Hp\new\Agriva\src\app\dashboard\page.tsx:36:7
+  34 |       )
+  35 |     } else {
+> 36 |       setLiveLocation("Anantapur, Andhra Pradesh (Default)")
+     |       ^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  37 |       setLocating(false)
+  38 |     }
+  39 |   }, [])  react-hooks/set-state-in-effect
+  174:101  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react/no-unescaped-entities
+
+C:\Users\Hp\new\Agriva\src\app\page.tsx
+  17:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Hp\new\Agriva\src\app\page.tsx:17:5
+  15 |   // Avoid hydration mismatch
+  16 |   useEffect(() => {
+> 17 |     setMounted(true)
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  18 |   }, [])
+  19 |
+  20 |   if (!mounted) return null  react-hooks/set-state-in-effect
+
+C:\Users\Hp\new\Agriva\src\app\rain-risk\page.tsx
+  22:136  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  40:29   error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  78:57   error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  78:68   error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\Hp\new\Agriva\src\app\soil-health\page.tsx
+  78:78  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\Hp\new\Agriva\src\components\crop-iq.tsx
+  9:83  warning  'AlertCircle' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Hp\new\Agriva\src\components\language-provider.tsx
+  76:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Hp\new\Agriva\src\components\language-provider.tsx:76:7
+  74 |     const savedCode = localStorage.getItem("agribrain_lang")
+  75 |     if (savedCode && translations[savedCode]) {
+> 76 |       setLanguage(savedCode)
+     |       ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  77 |     }
+  78 |   }, [])
+  79 |  react-hooks/set-state-in-effect
+
+C:\Users\Hp\new\Agriva\src\components\rain-risk-card.tsx
+  4:29  warning  'CardDescription' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Hp\new\Agriva\src\components\region-provider.tsx
+  20:16  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Hp\new\Agriva\src\components\region-provider.tsx:20:16
+  18 |   useEffect(() => {
+  19 |     const saved = localStorage.getItem("agriva_region")
+> 20 |     if (saved) setRegion(saved)
+     |                ^^^^^^^^^ Avoid calling setState() directly within an effect
+  21 |   }, [])
+  22 |
+  23 |   const handleSetRegion = (reg: string) => {  react-hooks/set-state-in-effect
+
+Γ£û 24 problems (16 errors, 8 warnings)
+

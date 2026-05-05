@@ -68,7 +68,7 @@ export default function DashboardOverview() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-[10px] font-black uppercase tracking-widest border border-green-500/20">
                   <Zap className="w-3 h-3 fill-current" /> Agriva Enterprise Cloud
                 </div>
-                <h1 className="text-4xl lg:text-5xl font-black tracking-tightest">
+                <h1 className="text-4xl lg:text-5xl font-black tracking-tighter">
                   Operational <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">Dashboard</span>
                 </h1>
                 <p className="text-slate-400 text-lg font-medium">Real-time agricultural decision intelligence for your farm.</p>
@@ -168,7 +168,7 @@ export default function DashboardOverview() {
                   </div>
                   <div className="flex-1 space-y-3">
                     <div className="flex items-center gap-3">
-                      <h4 className="text-2xl font-black tracking-tight text-white">Precision Fertilizer Planner</h4>
+                      <h4 className="text-xl font-black tracking-tighter text-white">Precision Fertilizer Planner</h4>
                       <span className="animate-bounce bg-purple-500 text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">New Algorithm</span>
                     </div>
                     <p className="text-slate-400 text-base leading-relaxed font-medium">The industry's first N-P-K situational fertilizer calculator. Get precise kilogram measurements of Urea and DAP requirements verified by our Llama-3 Soil Expert.</p>
